@@ -52,8 +52,10 @@
 			isa = PBXGroup;
 			children = (
 				FF6A2026273E563B0043B31D /* PokemonApp.swift */,
-				FF6A2028273E563B0043B31D /* ContentView.swift */,
-				FF6A202A273E563D0043B31D /* Assets.xcassets */,
+				FF6A2035273E57EA0043B31D /* Models */,
+				FF6A2034273E57DE0043B31D /* Views */,
+				FF6A2036273E57F10043B31D /* ViewModels */,
+				FF6A2037273E57FE0043B31D /* SupportingFiles */,
 				FF6A202C273E563D0043B31D /* Preview Content */,
 			);
 			path = Pokemon;
@@ -65,6 +67,36 @@
 				FF6A202D273E563D0043B31D /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		FF6A2034273E57DE0043B31D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				FF6A2028273E563B0043B31D /* ContentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		FF6A2035273E57EA0043B31D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		FF6A2036273E57F10043B31D /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		FF6A2037273E57FE0043B31D /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				FF6A202A273E563D0043B31D /* Assets.xcassets */,
+			);
+			path = SupportingFiles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
