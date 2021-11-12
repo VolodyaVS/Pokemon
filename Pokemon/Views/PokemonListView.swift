@@ -14,7 +14,36 @@ struct PokemonListView: View {
         NavigationView {
             List {
                 ForEach(pokemonViewModel.pokemons) { pokemon in
-                    Text("\(pokemon.name)")
+                    HStack {
+                        VStack(alignment: .leading, spacing: 8) {
+                            Text("\(pokemon.name.capitalized)")
+                                .font(.title)
+                            HStack {
+                                Text("\(pokemon.type.capitalized)")
+                                    .italic()
+                                Circle()
+                                    .foregroundColor(pokemon.typeColor)
+                                    .frame(width: 14)
+                            }
+                        }
+                        Spacer()
+                        AsyncImage(url: URL(string: pokemon.imageURL)) { phase in
+                            switch phase {
+                            case .empty:
+                                ProgressView()
+                            case .success(let image):
+                                image
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 100,
+                                           height: 100)
+                            case .failure(_):
+                                Image(systemName: "photo")
+                            @unknown default:
+                                EmptyView()
+                            }
+                        }
+                    }
                 }
             }
             .navigationTitle("Pokemons")
