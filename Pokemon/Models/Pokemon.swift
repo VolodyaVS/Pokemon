@@ -1,5 +1,5 @@
 //
-//  PokemonModel.swift
+//  Pokemon.swift
 //  Pokemon
 //
 //  Created by Vladimir Stepanchikov on 12.11.2021.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct PokemonModel: Identifiable, Decodable {
+struct Pokemon: Identifiable, Decodable {
     let pokemonID = UUID()
 
     let id: Int
