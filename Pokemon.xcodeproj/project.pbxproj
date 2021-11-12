@@ -11,6 +11,7 @@
 		FF6A2029273E563B0043B31D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6A2028273E563B0043B31D /* ContentView.swift */; };
 		FF6A202B273E563D0043B31D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF6A202A273E563D0043B31D /* Assets.xcassets */; };
 		FF6A202E273E563D0043B31D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF6A202D273E563D0043B31D /* Preview Assets.xcassets */; };
+		FF6A2039273E588C0043B31D /* PokemonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6A2038273E588B0043B31D /* PokemonModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		FF6A2028273E563B0043B31D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		FF6A202A273E563D0043B31D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FF6A202D273E563D0043B31D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		FF6A2038273E588B0043B31D /* PokemonModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +57,7 @@
 				FF6A2035273E57EA0043B31D /* Models */,
 				FF6A2034273E57DE0043B31D /* Views */,
 				FF6A2036273E57F10043B31D /* ViewModels */,
+				FF6A203A273E59C70043B31D /* Services */,
 				FF6A2037273E57FE0043B31D /* SupportingFiles */,
 				FF6A202C273E563D0043B31D /* Preview Content */,
 			);
@@ -80,6 +83,7 @@
 		FF6A2035273E57EA0043B31D /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				FF6A2038273E588B0043B31D /* PokemonModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -97,6 +101,13 @@
 				FF6A202A273E563D0043B31D /* Assets.xcassets */,
 			);
 			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		FF6A203A273E59C70043B31D /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -170,6 +181,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF6A2029273E563B0043B31D /* ContentView.swift in Sources */,
+				FF6A2039273E588C0043B31D /* PokemonModel.swift in Sources */,
 				FF6A2027273E563B0043B31D /* PokemonApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
