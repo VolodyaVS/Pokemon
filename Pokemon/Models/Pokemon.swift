@@ -51,7 +51,7 @@ struct Pokemon: Identifiable, Decodable {
         case "ground":
             return Color(.systemBrown)
         case "flying":
-            return Color(.systemBlue)
+            return Color(.systemMint)
         case "fairy":
             return Color(.systemPink)
         default:
