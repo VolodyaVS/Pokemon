@@ -31,6 +31,6 @@ struct ParameterGroupView: View {
 
 struct PokemonStatsGroupView_Previews: PreviewProvider {
     static var previews: some View {
-        ParameterGroupView(attack: 88, defense: 30, height: 20, weight: 49)
+        ParameterGroupView(attack: 88, defense: 30, height: 20, weight: 4900)
     }
 }

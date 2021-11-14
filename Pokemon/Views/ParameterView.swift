@@ -27,14 +27,17 @@ struct ParameterView: View {
                            : 150,
                            height: 20)
             }
-            Text("\(value)")
-                .font(.system(.body, design: .monospaced))
+            VStack(alignment: .trailing) {
+                Text("\(value)")
+                    .font(.system(.body, design: .monospaced))
+                    .frame(width: 60)
+            }
         }
     }
 }
 
 struct PokemonStatView_Previews: PreviewProvider {
     static var previews: some View {
-        ParameterView(name: "Atk", color: .red, value: 88)
+        ParameterView(name: "Atk", color: .red, value: 8888)
     }
 }
