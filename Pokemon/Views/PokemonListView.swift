@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Kingfisher
 
 struct PokemonListView: View {
     @StateObject private var pokemonViewModel = PokemonViewModel()
@@ -15,28 +14,29 @@ struct PokemonListView: View {
         NavigationView {
             List {
                 ForEach(pokemonViewModel.pokemons) { pokemon in
-                    HStack {
-                        VStack(alignment: .leading, spacing: 8) {
-                            Text("\(pokemon.name.capitalized)")
-                                .font(.title)
-                            HStack {
-                                Text("\(pokemon.type.capitalized)")
-                                    .italic()
-                                Circle()
-                                    .foregroundColor(pokemon.typeColor)
-                                    .frame(width: 14)
+                    NavigationLink {
+                        PokemonDetailsView(viewModel: PokemonDetailsViewModel(pokemon: pokemon))
+                    } label: {
+                        HStack {
+                            VStack(alignment: .leading, spacing: 8) {
+                                Text("\(pokemon.name.capitalized)")
+                                    .font(.title)
+                                HStack {
+                                    Text("\(pokemon.type.capitalized)")
+                                        .italic()
+                                    Circle()
+                                        .foregroundColor(pokemon.typeColor)
+                                        .frame(width: 14)
+                                }
                             }
+                            Spacer()
+                            PokemonImageView(imageURL: pokemon.imageURL, isListView: true)
                         }
-                        Spacer()
-                        KFImage(URL(string: pokemon.imageURL))
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 100, height: 100)
                     }
                 }
             }
-            .navigationTitle("Pokemons")
             .listStyle(.plain)
+            .navigationTitle("Pokemons")
         }
         .task {
             await pokemonViewModel.getPokemons()
@@ -47,6 +47,5 @@ struct PokemonListView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         PokemonListView()
-            .preferredColorScheme(.dark)
     }
 }

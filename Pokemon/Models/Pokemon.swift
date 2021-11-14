@@ -9,12 +9,18 @@ import SwiftUI
 
 struct Pokemon: Identifiable, Decodable {
     let pokemonID = UUID()
+    var isFavorite = false
 
     let id: Int
     let name: String
     let imageURL: String
     let type: String
+
     let description: String
+    let attack: Int
+    let defense: Int
+    let height: Int
+    let weight: Int
 
     enum CodingKeys: String, CodingKey {
         case id
@@ -22,6 +28,10 @@ struct Pokemon: Identifiable, Decodable {
         case imageURL = "imageUrl"
         case type
         case description
+        case attack
+        case defense
+        case height
+        case weight
     }
 
     var typeColor: Color {
