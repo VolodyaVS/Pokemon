@@ -24,7 +24,7 @@ struct PokemonImageView: View {
                            height: isListView ? 100 : 150)
                     .modifier(StyleForImage(isListView: isListView))
             case .failure(_):
-                Image(systemName: "photo")
+                Image(systemName: "wifi.slash")
             @unknown default:
                 EmptyView()
             }
