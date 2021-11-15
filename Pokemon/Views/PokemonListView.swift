@@ -8,12 +8,21 @@
 import SwiftUI
 
 struct PokemonListView: View {
-    @StateObject private var pokemonViewModel = PokemonViewModel()
+    @StateObject private var pokemonListViewModel = PokemonListViewModel()
+    @State private var searchText = ""
+
+    private var filteredPokemons: [Pokemon] {
+            if searchText.isEmpty {
+                return pokemonListViewModel.pokemons
+            } else {
+                return pokemonListViewModel.pokemons.filter { $0.name.lowercased().contains(searchText.lowercased()) }
+            }
+        }
 
     var body: some View {
         NavigationView {
             List {
-                ForEach(pokemonViewModel.pokemons) { pokemon in
+                ForEach(filteredPokemons) { pokemon in
                     NavigationLink {
                         PokemonDetailsView(viewModel: PokemonDetailsViewModel(pokemon: pokemon))
                     } label: {
@@ -37,9 +46,10 @@ struct PokemonListView: View {
             }
             .listStyle(.plain)
             .navigationTitle("Pokemons")
+            .searchable(text: $searchText)
         }
         .task {
-            await pokemonViewModel.getPokemons()
+            await pokemonListViewModel.getPokemons()
         }
     }
 }
