@@ -9,7 +9,7 @@ import Foundation
 
 @MainActor
 class PokemonListViewModel: ObservableObject {
-    @Published private(set) var pokemons = [Pokemon]()
+    @Published var pokemons = [Pokemon]()
 
     private let networkManager = NetworkManager()
 
