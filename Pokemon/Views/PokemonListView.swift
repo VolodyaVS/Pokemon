@@ -11,6 +11,8 @@ struct PokemonListView: View {
     @StateObject private var pokemonListViewModel = PokemonListViewModel()
     @State private var searchText = ""
 
+    @ObservedObject var networkMonitor = NetworkMonitor()
+
     private var filteredPokemons: [Pokemon] {
         if searchText.isEmpty {
             return pokemonListViewModel.pokemons
@@ -21,57 +23,64 @@ struct PokemonListView: View {
 
     var body: some View {
         NavigationView {
-            List {
-                ForEach(filteredPokemons) { pokemon in
-                    NavigationLink {
-                        PokemonDetailsView(viewModel: PokemonDetailsViewModel(pokemon: pokemon))
-                    } label: {
-                        HStack {
-                            VStack(alignment: .leading, spacing: 8) {
+            ZStack {
+                if networkMonitor.isConnected {
+                    List {
+                        ForEach(filteredPokemons) { pokemon in
+                            NavigationLink {
+                                PokemonDetailsView(viewModel: PokemonDetailsViewModel(pokemon: pokemon))
+                            } label: {
                                 HStack {
-                                    Text("\(pokemon.name.capitalized)")
-                                        .font(.title)
-                                    if pokemon.isFavorite {
-                                        Image(systemName: "star.fill")
-                                            .foregroundColor(.yellow)
+                                    VStack(alignment: .leading, spacing: 8) {
+                                        HStack {
+                                            Text("\(pokemon.name.capitalized)")
+                                                .font(.title)
+                                            if pokemon.isFavorite {
+                                                Image(systemName: "star.fill")
+                                                    .foregroundColor(.yellow)
+                                            }
+                                        }
+                                        HStack {
+                                            Text("\(pokemon.type.capitalized)")
+                                                .italic()
+                                            Circle()
+                                                .foregroundColor(pokemon.typeColor)
+                                                .frame(width: 14)
+                                        }
                                     }
-                                }
-                                HStack {
-                                    Text("\(pokemon.type.capitalized)")
-                                        .italic()
-                                    Circle()
-                                        .foregroundColor(pokemon.typeColor)
-                                        .frame(width: 14)
+                                    Spacer()
+                                    PokemonImageView(imageURL: pokemon.imageURL, isListView: true)
                                 }
                             }
-                            Spacer()
-                            PokemonImageView(imageURL: pokemon.imageURL, isListView: true)
-                        }
-                    }
-                    .swipeActions(edge: .leading, allowsFullSwipe: true) {
-                        Button {
-                            addFavorite(for: pokemon)
-                        } label: {
-                            Image(systemName: "star")
-                        }
-                        .tint(.yellow)
-                    }
-                    .swipeActions(edge: .trailing) {
-                        Button(role: .destructive) {
-                            withAnimation {
-                                if let index = pokemonListViewModel.pokemons.firstIndex(
-                                    where: { $0.id == pokemon.id }
-                                ) {
-                                    pokemonListViewModel.pokemons.remove(at: index)
+                            .swipeActions(edge: .leading, allowsFullSwipe: true) {
+                                Button {
+                                    addFavorite(for: pokemon)
+                                } label: {
+                                    Image(systemName: "star")
+                                }
+                                .tint(.yellow)
+                            }
+                            .swipeActions(edge: .trailing) {
+                                Button(role: .destructive) {
+                                    withAnimation {
+                                        if let index = pokemonListViewModel.pokemons.firstIndex(
+                                            where: { $0.id == pokemon.id }
+                                        ) {
+                                            pokemonListViewModel.pokemons.remove(at: index)
+                                        }
+                                    }
+                                } label: {
+                                    Image(systemName: "trash")
                                 }
                             }
-                        } label: {
-                            Image(systemName: "trash")
                         }
                     }
+                    .listStyle(.plain)
+                } else {
+                    Text("No Internet connection")
+                        .font(.largeTitle)
                 }
             }
-            .listStyle(.plain)
             .navigationTitle("Pokemons")
             .searchable(text: $searchText)
             .refreshable {

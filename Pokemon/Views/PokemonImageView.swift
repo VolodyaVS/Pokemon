@@ -25,6 +25,9 @@ struct PokemonImageView: View {
                     .modifier(StyleForImage(isListView: isListView))
             case .failure(_):
                 Image(systemName: "wifi.slash")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 30)
             @unknown default:
                 EmptyView()
             }

@@ -26,12 +26,11 @@ struct PokemonDetailsView: View {
                                 .font(.largeTitle)
                             Text(viewModel.pokemon.type.capitalized)
                                 .italic()
-                        }.foregroundColor(.white)
+                        }
                         PokemonImageView(imageURL: viewModel.pokemon.imageURL, isListView: false)
                     }
                     VStack {
                         Text(viewModel.pokemon.description.replacingOccurrences(of: "\n", with: ""))
-                            .foregroundColor(.white)
                         .padding()
                         ParameterGroupView(attack: viewModel.pokemon.attack,
                                            defense: viewModel.pokemon.defense,

@@ -16,6 +16,7 @@ struct ParameterView: View {
         HStack {
             Text(name)
                 .font(.system(.body, design: .monospaced))
+                .foregroundColor(.black)
             ZStack(alignment: .leading) {
                 RoundedRectangle(cornerRadius: 5)
                     .foregroundColor(.gray)
@@ -31,6 +32,7 @@ struct ParameterView: View {
                 Text("\(value)")
                     .font(.system(.body, design: .monospaced))
                     .frame(width: 60)
+                    .foregroundColor(.black)
             }
         }
     }
