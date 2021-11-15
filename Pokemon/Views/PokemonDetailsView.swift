@@ -9,6 +9,7 @@ import SwiftUI
 
 struct PokemonDetailsView: View {
     @StateObject var viewModel: PokemonDetailsViewModel
+    @State private var scale: CGFloat = 0
 
     var body: some View {
         GeometryReader { geometry in
@@ -28,13 +29,24 @@ struct PokemonDetailsView: View {
                         }.foregroundColor(.white)
                         PokemonImageView(imageURL: viewModel.pokemon.imageURL, isListView: false)
                     }
-                    Text(viewModel.pokemon.description.replacingOccurrences(of: "\n", with: ""))
-                        .foregroundColor(.white)
+                    VStack {
+                        Text(viewModel.pokemon.description.replacingOccurrences(of: "\n", with: ""))
+                            .foregroundColor(.white)
                         .padding()
-                    ParameterGroupView(attack: viewModel.pokemon.attack,
-                                       defense: viewModel.pokemon.defense,
-                                       height: viewModel.pokemon.height,
-                                       weight: viewModel.pokemon.weight)
+                        ParameterGroupView(attack: viewModel.pokemon.attack,
+                                           defense: viewModel.pokemon.defense,
+                                           height: viewModel.pokemon.height,
+                                           weight: viewModel.pokemon.weight)
+                    }
+                    .scaleEffect(scale)
+                    .onAppear {
+                        let animation = Animation.spring(dampingFraction: 0.5)
+                        let repeated = animation.repeatCount(1)
+
+                        withAnimation(repeated) {
+                            scale = 1
+                        }
+                    }
                 }
             }
         }

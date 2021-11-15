@@ -12,12 +12,12 @@ struct PokemonListView: View {
     @State private var searchText = ""
 
     private var filteredPokemons: [Pokemon] {
-            if searchText.isEmpty {
-                return pokemonListViewModel.pokemons
-            } else {
-                return pokemonListViewModel.pokemons.filter { $0.name.lowercased().contains(searchText.lowercased()) }
-            }
+        if searchText.isEmpty {
+            return pokemonListViewModel.pokemons
+        } else {
+            return pokemonListViewModel.pokemons.filter { $0.name.lowercased().contains(searchText.lowercased()) }
         }
+    }
 
     var body: some View {
         NavigationView {
