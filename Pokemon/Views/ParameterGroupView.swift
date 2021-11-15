@@ -16,9 +16,10 @@ struct ParameterGroupView: View {
     var body: some View {
         ZStack {
             Rectangle()
-                .frame(width: 290, height: 170)
+                .frame(height: 170)
                 .foregroundColor(.white.opacity(0.6))
                 .cornerRadius(20)
+                .padding()
             VStack {
                 ParameterView(name: "Atk", color: .red, value: attack)
                 ParameterView(name: "Def", color: .green, value: defense)
