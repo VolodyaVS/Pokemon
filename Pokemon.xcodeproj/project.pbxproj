@@ -22,6 +22,8 @@
 		FF6A204D274100C40043B31D /* ParameterGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6A204C274100C40043B31D /* ParameterGroupView.swift */; };
 		FF6A204F2741051A0043B31D /* PokemonDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6A204E2741051A0043B31D /* PokemonDetailsViewModel.swift */; };
 		FF6A2053274146030043B31D /* StyleForImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6A2052274146030043B31D /* StyleForImage.swift */; };
+		FF6A205727423F580043B31D /* CacheAsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6A205627423F580043B31D /* CacheAsyncImage.swift */; };
+		FF6A205927424BD60043B31D /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6A205827424BD60043B31D /* ImageCache.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +43,8 @@
 		FF6A204C274100C40043B31D /* ParameterGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParameterGroupView.swift; sourceTree = "<group>"; };
 		FF6A204E2741051A0043B31D /* PokemonDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonDetailsViewModel.swift; sourceTree = "<group>"; };
 		FF6A2052274146030043B31D /* StyleForImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleForImage.swift; sourceTree = "<group>"; };
+		FF6A205627423F580043B31D /* CacheAsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheAsyncImage.swift; sourceTree = "<group>"; };
+		FF6A205827424BD60043B31D /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +104,7 @@
 				FF6A2048273EFA5B0043B31D /* PokemonImageView.swift */,
 				FF6A204C274100C40043B31D /* ParameterGroupView.swift */,
 				FF6A204A273F008A0043B31D /* ParameterView.swift */,
+				FF6A205627423F580043B31D /* CacheAsyncImage.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -136,6 +141,7 @@
 			children = (
 				FF6A203B273E5E540043B31D /* NetworkManager.swift */,
 				FF6A203D273E5EF90043B31D /* FetchError.swift */,
+				FF6A205827424BD60043B31D /* ImageCache.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -214,6 +220,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF6A205927424BD60043B31D /* ImageCache.swift in Sources */,
 				FF6A203C273E5E540043B31D /* NetworkManager.swift in Sources */,
 				FF6A2029273E563B0043B31D /* PokemonListView.swift in Sources */,
 				FF6A203E273E5EF90043B31D /* FetchError.swift in Sources */,
@@ -224,6 +231,7 @@
 				FF6A2047273EF7640043B31D /* PokemonDetailsView.swift in Sources */,
 				FF6A204F2741051A0043B31D /* PokemonDetailsViewModel.swift in Sources */,
 				FF6A2027273E563B0043B31D /* PokemonApp.swift in Sources */,
+				FF6A205727423F580043B31D /* CacheAsyncImage.swift in Sources */,
 				FF6A2040273E60160043B31D /* Data+extension.swift in Sources */,
 				FF6A2049273EFA5B0043B31D /* PokemonImageView.swift in Sources */,
 				FF6A204D274100C40043B31D /* ParameterGroupView.swift in Sources */,

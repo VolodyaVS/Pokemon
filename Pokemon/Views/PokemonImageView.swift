@@ -12,7 +12,7 @@ struct PokemonImageView: View {
     let isListView: Bool
 
     var body: some View {
-        AsyncImage(url: URL(string: imageURL)) { phase in
+        CacheAsyncImage(url: URL(string: imageURL)!) { phase in
             switch phase {
             case .empty:
                 ProgressView()
@@ -30,7 +30,6 @@ struct PokemonImageView: View {
             }
         }
     }
-
 }
 
 struct PokemonImageView_Previews: PreviewProvider {
