@@ -11,7 +11,7 @@ Technology stack:
 - MVVM
 - SwiftUI
 - network API requests
-- short-term cache is used
+- using cache for AsyncImages
 
 
 <div>Icons made by <a href="https://www.flaticon.com/authors/those-icons" title="Those Icons">Those Icons</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
