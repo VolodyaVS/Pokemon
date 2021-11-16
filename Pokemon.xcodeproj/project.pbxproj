@@ -23,7 +23,6 @@
 		FF6A204F2741051A0043B31D /* PokemonDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6A204E2741051A0043B31D /* PokemonDetailsViewModel.swift */; };
 		FF6A2053274146030043B31D /* StyleForImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6A2052274146030043B31D /* StyleForImage.swift */; };
 		FF6A205727423F580043B31D /* CacheAsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6A205627423F580043B31D /* CacheAsyncImage.swift */; };
-		FF6A205927424BD60043B31D /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6A205827424BD60043B31D /* ImageCache.swift */; };
 		FF6A205F274289730043B31D /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6A205E274289720043B31D /* NetworkMonitor.swift */; };
 /* End PBXBuildFile section */
 
@@ -45,7 +44,6 @@
 		FF6A204E2741051A0043B31D /* PokemonDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonDetailsViewModel.swift; sourceTree = "<group>"; };
 		FF6A2052274146030043B31D /* StyleForImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleForImage.swift; sourceTree = "<group>"; };
 		FF6A205627423F580043B31D /* CacheAsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheAsyncImage.swift; sourceTree = "<group>"; };
-		FF6A205827424BD60043B31D /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		FF6A205E274289720043B31D /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
 		FF6A20602742DE020043B31D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -145,7 +143,6 @@
 			children = (
 				FF6A203B273E5E540043B31D /* NetworkManager.swift */,
 				FF6A203D273E5EF90043B31D /* FetchError.swift */,
-				FF6A205827424BD60043B31D /* ImageCache.swift */,
 				FF6A205E274289720043B31D /* NetworkMonitor.swift */,
 			);
 			path = Services;
@@ -225,7 +222,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FF6A205927424BD60043B31D /* ImageCache.swift in Sources */,
 				FF6A205F274289730043B31D /* NetworkMonitor.swift in Sources */,
 				FF6A203C273E5E540043B31D /* NetworkManager.swift in Sources */,
 				FF6A2029273E563B0043B31D /* PokemonListView.swift in Sources */,

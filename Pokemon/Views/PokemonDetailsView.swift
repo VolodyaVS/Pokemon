@@ -27,7 +27,8 @@ struct PokemonDetailsView: View {
                             Text(viewModel.pokemon.type.capitalized)
                                 .italic()
                         }
-                        PokemonImageView(imageURL: viewModel.pokemon.imageURL, isListView: false)
+                        PokemonImageView(imageURL: viewModel.pokemon.imageURL,
+                                         isListView: false)
                     }
                     VStack {
                         Text(viewModel.pokemon.description.replacingOccurrences(of: "\n", with: ""))

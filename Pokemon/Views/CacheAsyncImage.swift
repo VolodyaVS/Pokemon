@@ -8,53 +8,51 @@
 import SwiftUI
 
 struct CacheAsyncImage<Content>: View where Content: View {
-    private let url: URL
+    @State private var phase: AsyncImagePhase = .empty
+
+    private let url: URL?
+    private let urlSession: URLSession
+    private let scale: CGFloat
     private let transaction: Transaction
     private let content: (AsyncImagePhase) -> Content
 
-    init(url: URL,
+    var body: some View {
+        content(phase)
+            .animation(transaction.animation, value: 1)
+            .task(id: url) {
+                await load(url: url)
+            }
+    }
+
+    init(url: URL?,
+         urlCache: URLCache = .shared,
+         scale: CGFloat = 1,
          transaction: Transaction = Transaction(),
          @ViewBuilder content: @escaping (AsyncImagePhase) -> Content) {
+
+        let configuration = URLSessionConfiguration.default
+        configuration.urlCache = urlCache
+        configuration.requestCachePolicy = .returnCacheDataElseLoad
+
         self.url = url
+        self.urlSession =  URLSession(configuration: configuration)
+        self.scale = scale
         self.transaction = transaction
         self.content = content
     }
 
-    var body: some View {
-        if let cached = ImageCache[url] {
-            content(.success(cached))
-        } else {
-            AsyncImage(url: url, scale: 1, transaction: transaction) { phase in
-                cacheAndRender(phase: phase)
-            }
-        }
-    }
+    private func load(url: URL?) async {
+        do {
+            guard let url = url else { return }
+            let request = URLRequest(url: url)
+            let (data, _) = try await urlSession.data(for: request)
 
-    func cacheAndRender(phase: AsyncImagePhase) -> some View {
-        if case .success(let image) = phase {
-            ImageCache[url] = image
-        }
-        return content(phase)
-    }
-}
-
-struct CacheAsyncImage_Previews: PreviewProvider {
-    static var previews: some View {
-        CacheAsyncImage(url: URL(string: "https://firebasestorage.googleapis.com/v0/b/pokedex-bb36f.appspot.com/o/pokemon_images%2F2CF15848-AAF9-49C0-90E4-28DC78F60A78?alt=media&token=15ecd49b-89ff-46d6-be0f-1812c948e334")!) { phase in
-            switch phase {
-            case .empty:
-                ProgressView()
-            case .success(let image):
-                image
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: 150,
-                           height: 150)
-            case .failure(_):
-                Image(systemName: "photo")
-            @unknown default:
-                EmptyView()
+            if let uiImage = UIImage(data: data) {
+                let image = Image(uiImage: uiImage)
+                phase = .success(image)
             }
+        } catch {
+            phase = .failure(error)
         }
     }
 }
