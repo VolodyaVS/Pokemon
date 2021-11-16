@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct Pokemon: Identifiable, Decodable {
-    let pokemonID = UUID()
     var isFavorite = false
 
     let id: Int
